@@ -1,0 +1,28 @@
+-------------------------------------- Patchy --------------------------------------
+                      Last Updated: 10th October 2015 @ 21:04                       
+------------------------------------------------------------------------------------
+2.0: (6th October 2015) {Major Update}
+
+- Server now hashes password with SHA-512 on client side before sending it to the server
+- navigation.php created; site wide navigation bar
+- Admin control panel now shows for permission level 4 users
+- Admin Control panel created
+- Admin Control panel extra validation
+- Admin Control panel all users overview
+- Admin Control panel checks for updates using http://patchy-a.co.nf/ (Patchy asset site)
+- Config file now manages patchy size and patch amount
+- New *general* account types (default and premium) set in config.php
+- Account page has a bit more detail
+- When logging in an overlay is applied indicating the user wasn't ignored
+- When creating an account an overlay is applied indicating the user wasn't ignored
+- Fixed a bug where messages may not appear on the login/create page
+- Added hashes.min.js(60KB) to enable javascript hashing
+- Changed upload.php, delete.php, unzip.php to comply with new limiting system
+- Re-Worked some code in the main index.php file
+
+
+------------------------------------------------------------------------------------
+2.1: (Not released) {Security Update}
+
+- Session Security Improvements
+- Bug fixes
