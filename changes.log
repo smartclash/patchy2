@@ -1,5 +1,5 @@
 -------------------------------------- Patchy --------------------------------------
-                      Last Updated: 10th October 2015 @ 21:04                       
+                      Last Updated: 7th November 2015 @ 17:53                      
 ------------------------------------------------------------------------------------
 2.0: (6th October 2015) {Major Update}
 
@@ -22,7 +22,16 @@
 
 
 ------------------------------------------------------------------------------------
-2.1: (Not released) {Security Update}
+2.1: (7th November 2015) {Security Update}
 
-- Session Security Improvements
+- Session now regenerated when certain actions are carried out
+- document.cookie function has been removed from javascript
 - Bug fixes
+- $usingLinux is now set by config.php automatically
+- Will now detect protocol for links instead of reverting to http
+- Links in most scripts now follow $fullPathToRoot instead of ../ or /
+- When redirecting to the homepage $fullPathToHome is now used
+- Connection now closes upon create.php finishing
+- Admin Users overview AccountType and isActive now strings instead of integers
+- Clicking site help will take you to http://patchy-a.co.nf/help.php
+- Added base theme engine, 2.2 will add more theme features
