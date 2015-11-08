@@ -36,7 +36,7 @@
 	<script type="text/javascript" src="assets/js/homePageAjax.js"></script>
 	
 	<div id="footer">
-		<a href="https://github.com/jake-cryptic/patchy/" target="_blank" class="white-link" id="patchy-github-link">Patchy on github</a>
+		<a href="https://github.com/jake-cryptic/patchy2/" target="_blank" class="white-link" id="patchy-github-link">Patchy on github</a>
 	</div>
 	
 </div>
