@@ -9,12 +9,8 @@ Each version is in a subfolder and contains new features
 
 Updates will be published around every 1 - 3 months unless a security flaw is discovered in which case asap.
 
-The officical sites for patchy are:
+The officical site for patchy is:
 
-    http://patchy.co.nf/
-    
-And
-    
-    http://patchy-b.co.nf/
+    http://projects.absolutedouble.co.uk/patchy/
     
 So long as the homepage links to this repo I don't mind if you use it commerically.
