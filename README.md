@@ -12,5 +12,20 @@ Updates will be published around every 1 - 3 months unless a security flaw is di
 The officical site for patchy is:
 
     http://projects.absolutedouble.co.uk/patchy/
-    
+
+Setup is as follows:
+
+1.
+  
+  	Create the database using the installer (install.php)
+
+2.
+  
+  	Edit the config file to your liking (/assets/php/main/config.php)
+  	
+  	Add your database to the db.php file (/assets/php/main/db.php)
+
+3.
+	Stay tuned for updates, apart from that, your done :)
+
 So long as the homepage links to this repo I don't mind if you use it commerically.
