@@ -9,6 +9,6 @@ Updates will be published around every 1 - 3 months unless a security flaw is di
 
 The officical site for patchy is:
 
-    http://patchy.co.nf/
+    http://projects.absolutedouble.co.uk/patchy/
     
 So long as the homepage links to this repo I don't mind if you use it commerically.
