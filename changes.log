@@ -1,6 +1,6 @@
--------------------------------------- Patchy --------------------------------------
-                      Last Updated: 7th November 2015 @ 17:53                      
-------------------------------------------------------------------------------------
+--------------------------------------- Patchy ---------------------------------------
+                       Last Updated: 7th January 2016 @ 19:53                       
+--------------------------------------------------------------------------------------
 2.0: (6th October 2015) {Major Update}
 
 - Server now hashes password with SHA-512 on client side before sending it to the server
@@ -21,7 +21,7 @@
 - Re-Worked some code in the main index.php file
 
 
-------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 2.1: (7th November 2015) {Security Update}
 
 - Session now regenerated when certain actions are carried out
@@ -35,3 +35,24 @@
 - Admin Users overview AccountType and isActive now strings instead of integers
 - Clicking site help will take you to http://patchy-a.co.nf/help.php
 - Added base theme engine, 2.2 will add more theme features
+
+
+--------------------------------------------------------------------------------------
+3.0: (7th January 2016) {Major Update} (CodeName: Cheetah)
+
+- Added "security" settings to config.php
+- Patchy installer updated to version 2
+- AJAX file upload
+- Admins can view users specifically
+- document.cookie added to javascript but can be removed by including stopCookieAccess.js
+- Cookie policy alert
+- hashes.min.js size reduced from 60KB to 11.8KB
+- Optimized images
+- Logout bug fixed
+- Admin login bug fixed
+- Altered some styles in both default themes
+- Response messages can be hidden by being clicked on
+- Major security hole closed
+- Google drive now used for update checks
+
+--------------------------------------------------------------------------------------
