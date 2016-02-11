@@ -28,15 +28,19 @@ if (accountLoggedIn()) { // Only if account is logged in
 			// We don't start at 0 otherwise the actual patch name will cause an error
 			for($i = 1; $i < $zip->numFiles; $i++){
 				$item = $zip->statIndex($i); 
-				$name = end(explode("/",$item['name'])); // Clean out directories
+				
+				$nameArray = explode("/",$item['name']);
+				$name = end($nameArray);
+				$fileBreak = explode(".",$name);
+				$fileExt = end($fileBreak); // Clean out directories
 				
 				if ($name != "") { // When changing directories this happens..
 					// Check for valid file endings
-					if (strpos(strtolower(end(explode(".",$name))),'csv') !== false) { // CSV check
+					if (strpos(strtolower($fileExt),'csv') !== false) { // CSV check
 						$validCount = $validCount + 1;
-					} elseif (strpos(strtolower(end(explode(".",$name))),'sc') !== false) { // SC check
+					} elseif (strpos(strtolower($fileExt),'sc') !== false) { // SC check
 						$validCount = $validCount + 1;
-					} elseif (strpos(strtolower(end(explode(".",$name))),'json') !== false) { // JSON check
+					} elseif (strpos(strtolower($fileExt),'json') !== false) { // JSON check
 						$validCount = $validCount + 1;
 					} else {
 						$invalidCount = $invalidCount + 1;
