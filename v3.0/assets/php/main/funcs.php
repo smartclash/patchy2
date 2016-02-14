@@ -75,7 +75,7 @@ function checkPatchyVersion() {
 	// Check for updates..
 	require "version.php";
 	
-	$url = file_get_contents("https://1d8c70382340385cef000e056c407a519629e446.googledrive.com/host/0B0RxtOYOzL0TMzZJUHcyUC1UQ2c");
+	$url = file_get_contents("http://patchy-a.co.nf/api.php?action=updateCheck");
 	$data = @json_decode($url);
 	if ($versionType == "alpha") {
 		if ($data->versions->alpha == $version) {
