@@ -12,17 +12,17 @@ RewriteRule ^(.*)$ $1\.php
 
 RewriteRule ^token/([A-Za-z0-9-]+)/?$ assets/php/scripts/token_login.php?data=$1 [NC,L]
 
-<ifModule mod_expires.c>
-ExpiresActive On
-ExpiresDefault A300
+# 1 Month
+<FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
 
-# Expires after 1 month
-ExpiresByType image/gif A2592000
-ExpiresByType image/png A2592000
-ExpiresByType image/jpg A2592000
-ExpiresByType image/x-icon A2592000
-ExpiresByType application/x-javascript A86400
-ExpiresByType text/css A86400
-ExpiresByType text/javascript A86400
+# 1 week
+<FilesMatch "\.(txt|xml|js|css)$">
+Header set Cache-Control "max-age=604800"
+</FilesMatch>
 
-</ifModule>
+# NEVER CACHE!
+<FilesMatch "\.(html|htm|php|cgi|pl)$">
+Header set Cache-Control "max-age=0, private, no-store, no-cache, must-revalidate"
+</FilesMatch>
