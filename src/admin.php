@@ -3,7 +3,7 @@ require("assets/init.php");
 
 // Kick them off if they aren't an admin
 if(accountLoggedIn()) {
-	if ($_SESSION["accountType"] != 4) {
+	if ($_SESSION["accountType"] != 4 && $_SESSION["accountType"] != 3) {
 		header("Location: /");
 		die("This is a local admin script for local admins, we don't want your kind here");
 	} else {
