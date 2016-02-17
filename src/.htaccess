@@ -1,0 +1,28 @@
+#ErrorDocument 403 /px/assets/errors/403.php
+#ErrorDocument 404 /px/assets/errors/404.php
+#ErrorDocument 500 /px/assets/errors/500.php
+
+DirectoryIndex index.php
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*)$ $1\.php
+
+RewriteRule ^token/([A-Za-z0-9-]+)/?$ assets/php/scripts/token_login.php?data=$1 [NC,L]
+
+# 1 Month
+<FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
+
+# 1 week
+<FilesMatch "\.(txt|xml|js|css)$">
+Header set Cache-Control "max-age=604800"
+</FilesMatch>
+
+# NEVER CACHE!
+<FilesMatch "\.(html|htm|php|cgi|pl)$">
+Header set Cache-Control "max-age=0, private, no-store, no-cache, must-revalidate"
+</FilesMatch>
