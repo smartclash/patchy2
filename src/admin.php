@@ -22,9 +22,9 @@ if (isset($_POST["action"])) { // SHOULD ONLY BE USED FOR AJAX REQUESTS
 			if (!isset($_POST["commit"]) || !isset($_POST["userID"]) || !isset($_POST["change"])) {
 				die("<div class='statusMsgErr'>No data was sent</div>");
 			} else {
-				$DataChangeDirty = base64_decode(trim($_POST["change"]));
-				$NewDataDirty = base64_decode(trim($_POST["commit"]));
-				$UserIDDirty = base64_decode(trim($_POST["userID"]));
+				$DataChangeDirty = trim(base64_decode($_POST["change"]));
+				$NewDataDirty = trim(base64_decode($_POST["commit"]));
+				$UserIDDirty = trim(base64_decode($_POST["userID"]));
 				
 				if (!is_numeric($UserIDDirty)) {
 					die("<div class='statusMsgErr'>Invalid User: {$UserIDDirty}</div>");
