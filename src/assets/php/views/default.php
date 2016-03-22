@@ -40,7 +40,8 @@
 	<script type="text/javascript" src="assets/js/homePageAjax.js"></script>
 	
 	<div id="footer">
-		<a href="<?php echo $githubLink; ?>" target="_blank" class="white-link" id="patchy-github-link">Patchy on github</a>
+		<a href="<?php echo $githubLink; ?>" target="_blank" class="white-link" id="patchy-github-link">Patchy on github</a> | 
+		<a href="http://absolutedouble.co.uk" target="_blank" class="white-link" id="patchy-creator-link">Absolute Double</a>
 	</div>
 	
 </div>
