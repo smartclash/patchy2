@@ -80,7 +80,7 @@ $(document).ready(function() {
 				toggleLoginMessage();
 				notifications.addClass("hasNotification");
 				notifications.html(data).fadeIn(1000);
-				$("#createButton").prop('value', 'Login');
+				$("#loginbutton").prop('value', 'Login');
 			},
 			error: function(e) {
 				toggleLoginMessage();

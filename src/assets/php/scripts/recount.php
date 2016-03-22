@@ -10,7 +10,11 @@ require("../main/db.php");
 if (accountLoggedIn()) {
 	// Count the amount of patches user currently has
 	$currentdir = getcwd();
-	$dirs = array_filter(glob($currentdir . '\..\..\..\patch\\' . $_SESSION["username"] . '\*'), 'is_dir');
+	if (strpos($currentdir,"\\") !== false) {
+		$dirs = array_filter(glob($currentdir . '\..\..\..\patch\\' . $_SESSION["username"] . '\*'), 'is_dir');
+	} else {
+		$dirs = array_filter(glob($currentdir . '/../../../patch/' . $_SESSION["username"] . '/*'), 'is_dir');
+	}
 	$patches = count($dirs);
 	
 	if ($_SESSION["usedPatchInt"] == $patches) { // If the current amount of patches in db is the same as there actually is

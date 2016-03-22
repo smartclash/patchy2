@@ -8,6 +8,15 @@ function accountLoggedIn() {
 	}
 }
 
+function getCWF() {
+	// Will output something like https://patchy.co.nf/patchserver/
+	// Basically gets the current folder of the script 
+	if ($_SERVER["SERVER_PORT"] == 443) $_CWFprotocol = "https"; else $_CWFprotocol = "http";
+	if (dirname($_SERVER['SCRIPT_NAME']) == "\\") $_CWFdir = "/"; else $_CWFdir = dirname($_SERVER['SCRIPT_NAME']) . "/";
+	$_CWF = "$_CWFprotocol://" . $_SERVER["SERVER_NAME"] . $_CWFdir;
+	return $_CWF;
+}
+
 function createUniqueSalt() {
 	$rand = time()*rand(128,256);
 	$hash = hash("sha512",$rand);

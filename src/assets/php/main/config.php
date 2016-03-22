@@ -1,6 +1,6 @@
 <?php
 /*
- * Patchy 3.1 created by Jake Mcneill
+ * Patchy 3.2 created by Jake Mcneill
  * Licensed under the BSD 2-clause license
  * https://github.com/jake-cryptic/patchy2
  */
@@ -15,12 +15,12 @@ if ($_SERVER["SERVER_PORT"] == 443) {
 $site = array(
 	"info" => array(
 		"name" => "SITE_NAME",
-		"author" => "Jake Mcneill - 2015",
+		"author" => "",
 		"content" => "text/html; charset=UTF-8",
 		"language" => "en",
 		"keywords" => "",
-		"description" => "NOT CONFIGURED YET",
-		"shortDesc" => "Configure in config.php"
+		"description" => "",
+		"shortDesc" => "UPDATE YOUR CONFIG FILE"
 	),
 	
 	"security" => array(
@@ -49,7 +49,7 @@ $site = array(
 	),
 	
 	"server" => array(
-		"host" => "$protocol://WEBSITE.COM/", // Set this to your domain must end with a / and start with http:// or https://
+		"host" => "$protocol://patchserver.localhost/", // Set this to your domain must end with a / and start with http:// or https://
 		"mainPage" => "index.php", // Change only if you renamed the index.php file
 		"pathToMainPage" => "" // Only change if it is in a folder not the server root e.g. http://website/FOLDER_HERE/index.php
 	)

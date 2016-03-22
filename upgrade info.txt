@@ -5,4 +5,4 @@ You should update your database to have 2 new columns
 
 You can add these using PHPMyAdmin or running install.php with a new database
 
-These columns aren't going to be used until patchy 3.2 (earliest)
+These columns aren't going to be used until patchy 4.0 (earliest)

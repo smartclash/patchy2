@@ -60,8 +60,11 @@ if (accountLoggedIn()) {
 				$hashedPass = hashPassword($pwd,$item->uniqueSalt,$item->otherUniqueSalt);
 				$databaseHash = $item->password;
 				if ($hashedPass != $databaseHash) {
-					die("Couldn't log you in");
+					die("<span class=\"formError\">Couldn't log you in</span>");
 				} else {
+					if ($site["security"]["debug"] == true && $item->isAccountType != 3 && $item->isAccountType != 4) {
+						die("<span class=\"formError\">Logins have been temporarily disabled as the site is in debug mode</span><br />");
+					}
 					if ($item->isActive == 1) {
 						echo "Logged in!";
 						// Set important information
@@ -81,7 +84,7 @@ if (accountLoggedIn()) {
 						$_SESSION["signUpDate"] = $item->signUpDate;
 						$_SESSION["loginSet"] = true;
 						$_SESSION["usedPatchInt"] = $item->usedPatches;
-						echo "<script> location.href='{$fullPathToHome}?p=home'; </script>";
+						echo "<script> location.href='{$fullPathToRoot}?p=home'; </script>";
 					} else {
 						die("Account isn't active, contact support for help");
 					}

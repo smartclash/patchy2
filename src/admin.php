@@ -3,7 +3,7 @@ require("assets/init.php");
 
 // Kick them off if they aren't an admin
 if(accountLoggedIn()) {
-	if ($_SESSION["accountType"] != 4 && $_SESSION["accountType"] != 3) {
+	if ($_SESSION["accountType"] != 4) {
 		header("Location: /");
 		die("This is a local admin script for local admins, we don't want your kind here");
 	} else {
@@ -60,6 +60,14 @@ if (isset($_POST["action"])) { // SHOULD ONLY BE USED FOR AJAX REQUESTS
 			break;
 	}
 }
+
+$_adminNavBar = '<a href="admin.php" class="nav_link"><div class="nav_item left">Home</div></a>
+				<a href="index.php" class="nav_link"><div class="nav_item left">Site</div></a>
+				<a href="admin.php?c=usr" class="nav_link"><div class="nav_item left">Users</div></a>
+				<a href="admin.php?c=cnf" class="nav_link"><div class="nav_item left">Site Config</div></a>
+				<a href="admin.php?c=hlp" class="nav_link"><div class="nav_item left">Admin Help</div></a>
+				<a href="index.php?p=lgo" class="nav_link"><div class="nav_item right">Logout</div></a>';
+
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -114,7 +122,7 @@ if (isset($_POST["action"])) { // SHOULD ONLY BE USED FOR AJAX REQUESTS
 				
 				<div id="header">
 					<div class="a-cp-tarea">
-						<h1><?php echo $site["info"]["name"] . " $version - AdminCP"; ?></h1>
+						<h1><?php echo $site["info"]["name"] . " - $version - AdminCP"; ?></h1>
 						<h2>To continue as <?php echo $_SESSION["username"]; ?>, enter your password</h2>
 						<form action="#" method="post" name="verificationAdmin" id="verificationAdmin">
 							<input type="password" class="formElement" placeholder="Password" name="verifyPassword" id="verifyPassword" /><br />
@@ -133,10 +141,7 @@ if (isset($_POST["action"])) { // SHOULD ONLY BE USED FOR AJAX REQUESTS
 			?>
 			
 			<div id="navigation">
-				<a href="index.php?p=home" class="nav_link"><div class="nav_item left">Home</div></a>
-				<a href="admin.php?c=usr" class="nav_link"><div class="nav_item left">Users</div></a>
-				<a href="admin.php?c=hlp" class="nav_link"><div class="nav_item left">Site Help</div></a>
-				<a href="index.php?p=lgo" class="nav_link"><div class="nav_item right">Logout</div></a>
+				<?php echo $_adminNavBar; ?>
 			</div>
 			
 			<div id="content">
@@ -145,7 +150,7 @@ if (isset($_POST["action"])) { // SHOULD ONLY BE USED FOR AJAX REQUESTS
 				
 				<div id="header">
 					<div class="a-cp-tarea">
-						<h1><?php echo $site["info"]["name"] . " $version - AdminCP"; ?></h1>
+						<h1><?php echo $site["info"]["name"] . " - $version - AdminCP"; ?></h1>
 						<h2>Logged in as <?php echo $_SESSION["username"]; ?></h2>
 						<h4><?php if (!checkPatchyVersion()) { echo "<span id=\"update-me\">A newer version of Patchy is available <a href='https://github.com/jake-cryptic/patchy2'>here</a></span>"; } else { echo "Patchy is up to date"; } ?></h4>
 					</div>
@@ -159,10 +164,7 @@ if (isset($_POST["action"])) { // SHOULD ONLY BE USED FOR AJAX REQUESTS
 			?>
 			
 			<div id="navigation">
-				<a href="index.php?p=home" class="nav_link"><div class="nav_item left">Home</div></a>
-				<a href="admin.php?c=usr" class="nav_link"><div class="nav_item left">Users</div></a>
-				<a href="admin.php?c=hlp" class="nav_link"><div class="nav_item left">Site Help</div></a>
-				<a href="index.php?p=lgo" class="nav_link"><div class="nav_item right">Logout</div></a>
+				<?php echo $_adminNavBar; ?>
 			</div>
 			
 			<div id="content">
@@ -171,7 +173,7 @@ if (isset($_POST["action"])) { // SHOULD ONLY BE USED FOR AJAX REQUESTS
 				
 				<div id="header">
 					<div class="a-cp-tarea">
-						<h1><?php echo $site["info"]["name"] . " $version - Users"; ?></h1>
+						<h1><?php echo $site["info"]["name"] . " - $version - Users"; ?></h1>
 					</div>
 					
 					<script type="text/javascript">
@@ -252,10 +254,7 @@ if (isset($_POST["action"])) { // SHOULD ONLY BE USED FOR AJAX REQUESTS
 			?>
 			
 			<div id="navigation">
-				<a href="index.php?p=home" class="nav_link"><div class="nav_item left">Home</div></a>
-				<a href="admin.php?c=usr" class="nav_link"><div class="nav_item left">Users</div></a>
-				<a href="admin.php?c=hlp" class="nav_link"><div class="nav_item left">Site Help</div></a>
-				<a href="index.php?p=lgo" class="nav_link"><div class="nav_item right">Logout</div></a>
+				<?php echo $_adminNavBar; ?>
 			</div>
 			
 			<div id="content">
@@ -423,6 +422,76 @@ if (isset($_POST["action"])) { // SHOULD ONLY BE USED FOR AJAX REQUESTS
 					$("#notificationArea").html("<div class='statusMsgErr'>Action aborted</div>");
 				}
 			});
+			</script>
+			
+			<?php
+						} elseif ($_GET["c"] == "cnf") {
+			?>
+			<div id="navigation">
+				<?php echo $_adminNavBar; ?>
+			</div>
+			
+			<div id="content">
+				
+				<div id="notificationArea">&nbsp;</div>
+				
+				<div id="header">
+					<div class="a-cp-tarea">
+						<h1><?php echo $site["info"]["name"] . " - $version - Site Config"; ?></h1>
+						<h2>A quick way to edit config.php</h2>
+					</div>
+				</div>
+				
+				<style type="text/css">
+				#site_configuration { width:100%; margin-bottom:5%; }
+				.adminCategory { background-color:rgba(0,0,0,0.8);;color:#fff; } .adminCategory:hover { background-color:rgba(0,0,0,0.4); color:#fff; }
+				.adminSetting { background-color:rgba(255,255,255,0.8); } .adminSetting:hover { background-color:rgba(255,255,255,0.4); }
+				</style>
+				
+				<table id="site_configuration">
+					<thead>
+						<tr><th>Option</th><th>Value</th><th>Actions</th></tr>
+					</thead>
+					<tbody>
+						<?php
+						foreach($site as $category=>$key) {
+							echo "<tr class=\"adminCategory\"><td colspan=\"3\" id=\"e_sc_$category\">" . ucwords($category) . "</td></tr>";
+							foreach ($key as $nm=>$vl) {
+								if (!is_array($vl)) {
+									// This is just to show booleans as t/f not 1/0
+									if (gettype($vl) == "boolean") {
+										if ($vl == "1"){
+											$sVl = "True";
+										} else {
+											$sVl = "False";
+										}
+									} else {
+										$sVl = $vl;
+									}
+									// Echo the results
+									echo "<tr class=\"adminSetting\">
+										<td id=\"e_si_$nm\">$nm</td>
+										<td id=\"e_si_vl_$nm\">$sVl</td>
+										<td>
+											<button id=\"button_edit_$nm\" onclick=\"editSiteOption('$nm','$category')\">Edit</button>
+											<button id=\"button_info_$nm\" onclick=\"viewSiteOption('$nm','$category')\">Info</button>
+										</td>
+									</tr>";
+								}
+							}
+						}
+					?></tbody>
+				</table>
+				
+			</div>
+			
+			<script type="text/javascript">
+			function editSiteOption(option, category) {
+				alert("This will be working in the next version");
+			}
+			function viewSiteOption(option, category) {
+				alert("This will be working in the next version");
+			}
 			</script>
 			
 			<?php

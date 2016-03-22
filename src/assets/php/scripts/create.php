@@ -14,59 +14,63 @@ if (accountLoggedIn()) {
 		// Make the errors array
 		$err = array();
 		
-		// Time to clean the data so SQL injection isnt possible
-		$em = htmlspecialchars($_POST["createEmail"]);
-		$un = htmlspecialchars($_POST["createUsername"]);
-		$pw = htmlspecialchars($_POST["createPassword"]);
-		
-		// Validate client IP
-		if ($site["security"]["validate_ip"] == true) {
-			$createIP = htmlspecialchars($_SERVER["REMOTE_ADDR"]); // Just being safe..
-			if (filter_var($createIP, FILTER_VALIDATE_IP) === false) {
-				$err[] = "The computer you are using isn't trusted";
-			}
-		}
-		
-		// Check if the email is valid and if it's being used
-		if (filter_var($em, FILTER_VALIDATE_EMAIL) === false) {
-			$err[] = "Not a valid email";
+		if ($site["security"]["debug"] == true) {
+			$err[] = "Account Creation has been temporarily disabled as the site is in debug mode";
 		} else {
-			$checkEmail = "SELECT * FROM users WHERE email='" . $em . "'";
-			$queryEmail = $conn->query($checkEmail);
-			$emailRowCheck = $queryEmail->num_rows;
-			if ($emailRowCheck > 0) {
-				$err[] = "Email is in use";
+			// Time to clean the data so SQL injection isnt possible
+			$em = htmlspecialchars($_POST["createEmail"]);
+			$un = htmlspecialchars($_POST["createUsername"]);
+			$pw = htmlspecialchars($_POST["createPassword"]);
+			
+			// Validate client IP
+			if ($site["security"]["validate_ip"] == true) {
+				$createIP = htmlspecialchars($_SERVER["REMOTE_ADDR"]); // Just being safe..
+				if (filter_var($createIP, FILTER_VALIDATE_IP) === false) {
+					$err[] = "The computer you are using isn't trusted";
+				}
 			}
-		}
-		
-		// Check if username is valid and if it's being used
-		if (preg_match("/[^a-zA-Z0-9\_]/",$un)) {
-			// Had illegal characters
-			$err[] = "Username must be alphanumeric with underscores";
-		} else {
-			// Check if username is taken don't want any hacking/collisions
-			$checkUser = "SELECT * FROM users WHERE username='" . strtolower($un) . "'"; // Strtolower in case of windows servers
-			$queryUser = $conn->query($checkUser);
-			$userRowCheck = $queryUser->num_rows;
-			if ($userRowCheck > 0) {
-				$err[] = "Username has been taken";
+			
+			// Check if the email is valid and if it's being used
+			if (filter_var($em, FILTER_VALIDATE_EMAIL) === false) {
+				$err[] = "Not a valid email";
+			} else {
+				$checkEmail = "SELECT * FROM users WHERE email='" . $em . "'";
+				$queryEmail = $conn->query($checkEmail);
+				$emailRowCheck = $queryEmail->num_rows;
+				if ($emailRowCheck > 0) {
+					$err[] = "Email is in use";
+				}
 			}
-		}
-		
-		// Check if username email and password are all correct length
-		if (strlen($un) > 50) {
-			$err[] = "Username too long";
-		}
-		if (strlen($un) < 5) {
-			$err[] = "Username too short";
-		}
-		
-		if (strlen($em) > 255) {
-			$err[] = "Email too long";
-		}
-		
-		if (strlen($pw) < 5) {
-			$err[] = "Password too short";
+			
+			// Check if username is valid and if it's being used
+			if (preg_match("/[^a-zA-Z0-9\_]/",$un)) {
+				// Had illegal characters
+				$err[] = "Username must be alphanumeric with underscores";
+			} else {
+				// Check if username is taken don't want any hacking/collisions
+				$checkUser = "SELECT * FROM users WHERE username='" . strtolower($un) . "'"; // Strtolower in case of windows servers
+				$queryUser = $conn->query($checkUser);
+				$userRowCheck = $queryUser->num_rows;
+				if ($userRowCheck > 0) {
+					$err[] = "Username has been taken";
+				}
+			}
+			
+			// Check if username email and password are all correct length
+			if (strlen($un) > 50) {
+				$err[] = "Username too long";
+			}
+			if (strlen($un) < 5) {
+				$err[] = "Username too short";
+			}
+			
+			if (strlen($em) > 255) {
+				$err[] = "Email too long";
+			}
+			
+			if (strlen($pw) < 5) {
+				$err[] = "Password too short";
+			}
 		}
 		
 		// If we have had no errors so far we shall continue

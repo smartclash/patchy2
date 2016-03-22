@@ -2,7 +2,7 @@
 /* Default Database File */
 
 DEFINE("db_host","127.0.0.1");
-DEFINE("db_user","");
+DEFINE("db_user","root");
 DEFINE("db_pass","");
 DEFINE("db_dbse","patchy");
 
