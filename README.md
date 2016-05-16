@@ -1,13 +1,4 @@
 # Patchy2
------------------------------------------------------
-
-Upgrading:
-
-
-You *need* to use the new installer called first_run.php to upgrade from lower versions of patchy
-
-
-# Patchy2
 -----------------------------------------------------------------
 The free patch management solution built in PHP with MySQL
 -----------------------------------------------------------------
@@ -21,6 +12,11 @@ Updates will be published around every 1 - 3 months unless a security flaw is di
 The officical site for patchy is:
 
     http://patchy.co.nf
+
+
+Upgrading:
+
+You *need* to use the new installer called first_run.php to upgrade from lower versions of patchy
 
 Setup is as follows:
 
