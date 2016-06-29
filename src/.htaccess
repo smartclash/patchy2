@@ -10,14 +10,14 @@ RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteCond %{REQUEST_URI} !/$
 RewriteRule ^(.*)$ $1\.php
 
-# 1 Month
+# 1 Year
 <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
-Header set Cache-Control "max-age=2592000, public"
+Header set Cache-Control "max-age=31536000, public"
 </FilesMatch>
 
-# 1 week
+# 1 Month
 <FilesMatch "\.(txt|xml|js|css)$">
-Header set Cache-Control "max-age=604800"
+Header set Cache-Control "max-age=2592000"
 </FilesMatch>
 
 # NEVER CACHE!
