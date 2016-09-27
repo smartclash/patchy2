@@ -24,7 +24,7 @@ if (accountLoggedIn()) {
 			
 			// Validate client IP
 			if ($site["security"]["validate_ip"] == true) {
-				$createIP = htmlspecialchars($_SERVER["REMOTE_ADDR"]); // Just being safe..
+				$createIP = htmlspecialchars(getUserIP()); // Just being safe..
 				if (filter_var($createIP, FILTER_VALIDATE_IP) === false) {
 					$err[] = "The computer you are using isn't trusted";
 				}
