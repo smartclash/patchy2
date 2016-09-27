@@ -17,6 +17,19 @@ function getCWF() {
 	return $_CWF;
 }
 
+function getUserIP() { 
+	/**
+	 * It is important to get the real IP of the
+	 * user. Attackers can actually spoof the
+	 * $_SERVER['REMOTE_ADDR']; function
+	 */
+	
+	$ip = !empty($_SERVER['HTTP_CLIENT_IP']) ?
+		$_SERVER['HTTP_X_FORWARDED_FOR'] 
+		: $_SERVER['REMOTE_ADDR'];
+	return $ip;
+}
+
 function createUniqueSalt() {
 	$rand = time()*rand(128,256);
 	$hash = hash("sha512",$rand);
